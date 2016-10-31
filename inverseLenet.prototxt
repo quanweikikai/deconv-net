@@ -1,0 +1,37 @@
+name: "inverseLenet"
+
+input: "input1"
+input_dim: 1
+input_dim: 50
+input_dim: 8
+input_dim: 8
+
+input: "input2"
+input_dim: 1
+input_dim: 20
+input_dim: 24
+input_dim: 24
+
+layer {
+  name: "deconv2"
+  type: "Deconvolution"
+  bottom: "input1"
+  top: "deconv2"
+  convolution_param {
+    num_output: 20
+    kernel_size: 5
+    stride: 1
+  }
+}
+
+layer {
+  name: "deconv1"
+  type: "Deconvolution"
+  bottom: "input2"
+  top: "result"
+  convolution_param {
+    num_output: 1
+    kernel_size: 5
+    stride: 1
+  }
+}
